@@ -6,7 +6,7 @@ import DefaultLayout from './Components/Layout/DefaultLayout';
 function App() {
     return (
         <Router>
-            <div className="App">
+            <div className="App text-[#fff]">
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Layout =

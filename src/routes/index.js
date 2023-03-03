@@ -5,7 +5,7 @@ import Search from '~/pages/Search';
 export const publicRoutes = [
     { path: '/', component: Home },
     { path: '/album', component: Album },
-    { path: '/album', component: Search },
+    { path: '/search', component: Search },
 ];
 
 export const privateRoutes = [];

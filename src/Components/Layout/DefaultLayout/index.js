@@ -5,10 +5,12 @@ import NowPlayingBar from './NowPlayingBar';
 function DefaultLayout({ children }) {
     return (
         <div>
-            <Header />
-            <div className="container">
+            <div className="flex">
                 <NavBar />
-                <div className="content">{children}</div>
+                <div className="flex flex-col basis-full bg-[#121212] z-0">
+                    <Header className="" />
+                    <div className="content px-8">{children}</div>
+                </div>
             </div>
             <NowPlayingBar />
         </div>
