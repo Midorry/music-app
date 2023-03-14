@@ -5,16 +5,16 @@ import 'tippy.js/dist/tippy.css'; // optional
 import images from '~/assets/Images';
 
 function Header() {
-    const [icon, setIcon] = useState(true);
+    const [icon, setIcon] = useState(false);
     const handleOnClick = () => {
         setIcon(!icon);
     };
     return (
         <header className="flex justify-between items-center w-full py-4 px-8 ">
-            <div
+            {/* <div
                 className="h-[332px] w-full bg-[#535353] bg-gradient-to-b from-[#00000099] to-[#121212] 
                 absolute right-0 top-0 left-0 -z-10"
-            ></div>
+            ></div> */}
             <div className="flex justify-between gap-4">
                 <button className="h-[32px] w-[32px] text-white rounded-full bg-[rgba(0,0,0,.7)] inline-flex items-center justify-center">
                     <svg
