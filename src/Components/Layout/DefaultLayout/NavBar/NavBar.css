@@ -22,3 +22,9 @@ a svg {
     transition-timing-function: linear;
     transition-duration: 0.2s;
 }
+
+.svg-install:hover {
+    opacity: 1;
+    transition-timing-function: linear;
+    transition-duration: 0.2s;
+}

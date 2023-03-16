@@ -1,20 +1,20 @@
 import './NavBar.css';
 
 function NavBar() {
-    const $ = document.querySelector.bind(document);
-    var rootStyle = document.documentElement.style;
+    // const $ = document.querySelector.bind(document);
+    // var rootStyle = document.documentElement.style;
 
-    // console.log(range.offsetWidth);
-    const handleOnChange = (e) => {
-        const input = $('#input-range');
-        console.log(e.target.value);
-        console.log(input.value);
-        document.getElementById('input-range').value = e.target.value;
-        // rootStyle.setProperty('--nav-bar-width', e.target.value);
-    };
+    // // console.log(range.offsetWidth);
+    // const handleOnChange = (e) => {
+    //     const input = $('#input-range');
+    //     console.log(e.target.value);
+    //     console.log(input.value);
+    //     document.getElementById('input-range').value = e.target.value;
+    //     // rootStyle.setProperty('--nav-bar-width', e.target.value);
+    // };
     return (
-        <nav className="nav-bar h-full w-[318px] bg-[#000] z-10">
-            <div className="pt-[24px] w-full">
+        <nav className="nav-bar flex h-full w-[318px] bg-[#000] z-10">
+            <div className="pt-[24px] flex flex-col w-full">
                 <a href="/" className="px-[24px] mb-[18px] block">
                     <svg
                         viewBox="0 0 1134 340"
@@ -43,7 +43,7 @@ function NavBar() {
                             >
                                 <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"></path>
                             </svg>
-                            <span className="text-base font-medium">Home</span>
+                            <span className="text-sm font-bold">Home</span>
                         </a>
                     </li>
                     <li>
@@ -62,9 +62,7 @@ function NavBar() {
                             >
                                 <path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z"></path>
                             </svg>
-                            <span className="text-base font-medium">
-                                Search
-                            </span>
+                            <span className="text-sm font-bold">Search</span>
                         </a>
                     </li>
                     <li>
@@ -83,15 +81,15 @@ function NavBar() {
                             >
                                 <path d="M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z"></path>
                             </svg>
-                            <span className="text-base font-medium">
+                            <span className="text-sm font-bold">
                                 Your Library
                             </span>
                         </a>
                     </li>
                 </ul>
-                <div className="mt-[24px] text-base font-medium">
+                <div className="mt-[24px] flex flex-col flex-1 text-sm font-bold">
                     <div className="svg-button opacity-70">
-                        <button className="flex py-[8px] px-[24px]">
+                        <button className="flex items-center py-[8px] px-[24px]">
                             <div className="bg-[#fff] w-[24px] h-[24px] flex items-center justify-center rounded-sm mr-[16px]">
                                 <svg
                                     fill="#000"
@@ -101,7 +99,6 @@ function NavBar() {
                                     aria-hidden="true"
                                     viewBox="0 0 16 16"
                                     data-encore-id="icon"
-                                    class="Svg-sc-ytk21e-0 uPxdw"
                                 >
                                     <path d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75z"></path>
                                 </svg>
@@ -110,7 +107,10 @@ function NavBar() {
                         </button>
                     </div>
                     <div className="svg-link opacity-70">
-                        <a href="/" className="flex py-[8px] px-[24px]">
+                        <a
+                            href="/"
+                            className="flex items-center py-[8px] px-[24px]"
+                        >
                             <div className="svg-bg flex items-center justify-center w-[24px] h-[24px] rounded-sm mr-[16px]">
                                 <svg
                                     role="img"
@@ -126,6 +126,27 @@ function NavBar() {
                             <span>Liked Songs</span>
                         </a>
                     </div>
+                    <hr className="text-[#282828] h-[1px] mx-[24px] mt-2"></hr>
+                    <div className="mt-2 mx-[24px] flex-1 bg-gray-light"></div>
+                </div>
+                <div className="h-[40px] flex mx-2 text-sm font-bold">
+                    <a
+                        href="/"
+                        className="svg-install flex items-center gap-4 px-4 opacity-70"
+                    >
+                        <svg
+                            role="img"
+                            height="24"
+                            width="24"
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            data-encore-id="icon"
+                        >
+                            <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12z"></path>
+                            <path d="M12 6.05a1 1 0 0 1 1 1v7.486l1.793-1.793a1 1 0 1 1 1.414 1.414L12 18.364l-4.207-4.207a1 1 0 1 1 1.414-1.414L11 14.536V7.05a1 1 0 0 1 1-1z"></path>
+                        </svg>
+                        <span>Install App</span>
+                    </a>
                 </div>
             </div>
         </nav>
