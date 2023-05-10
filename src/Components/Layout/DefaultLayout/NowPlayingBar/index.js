@@ -1,6 +1,37 @@
 import images from '~/assets/Images';
 
+import { getStorage, getDownloadURL, ref, listAll } from 'firebase/storage';
+import { useEffect, useState } from 'react';
+
 function NowPlayingBar() {
+    const $ = document.querySelector.bind(document);
+    // const $$ = document.querySelectorAll.bind(document);
+
+    // const playBtn = $('.play-btn');
+    const audio = $('#audio');
+    const storage = getStorage();
+    const [imageUrls, setImageUrls] = useState([]);
+    const listRef = ref(storage, 'audio/');
+    // Lấy ra list music và link music
+    useEffect(() => {
+        listAll(listRef).then((response) => {
+            response.items.forEach((item) => {
+                getDownloadURL(item).then((url) => {
+                    // console.log(url);
+                    setImageUrls((prev) => [...prev, url]);
+                });
+            });
+        });
+    }, []);
+    // console.log(imageUrls[0]);
+    const handleOnClick = () => {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    };
+
     return (
         <div className="h-[90px] w-full z-10">
             <footer className="bg-[#181818] h-full">
@@ -80,7 +111,10 @@ function NowPlayingBar() {
                                     </svg>
                                 </button>
                             </div>
-                            <button className="text-[#000] h-8 w-8 bg-[#fff] rounded-full flex justify-center items-center">
+                            <button
+                                className="play-btn text-[#000] h-8 w-8 bg-[#fff] rounded-full flex justify-center items-center"
+                                onClick={handleOnClick}
+                            >
                                 <svg
                                     fill="currentColor"
                                     role="img"
@@ -116,7 +150,6 @@ function NowPlayingBar() {
                                         aria-hidden="true"
                                         viewBox="0 0 16 16"
                                         data-encore-id="icon"
-                                        class="Svg-sc-ytk21e-0 uPxdw"
                                     >
                                         <path d="M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1 1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0 0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12H5v1.5H3.75A3.75 3.75 0 0 1 0 9.75v-5z"></path>
                                     </svg>
@@ -128,15 +161,14 @@ function NowPlayingBar() {
                                 0:00
                             </div>
                             <div className="w-full relative">
-                                <label>
-                                    <input
-                                        className="w-full h-1 absolute bottom-[-2px]"
-                                        id="progress"
-                                        type="range"
-                                        min="0"
-                                        max="100"
-                                    ></input>
-                                </label>
+                                <input
+                                    className="w-full h-1 absolute bottom-[-2px]"
+                                    id="progress"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                ></input>
+                                <audio id="audio" src={imageUrls[0]}></audio>
                             </div>
                             <div className="min-w-[40px] text-left text-[11px] text-[#A7A7A3]">
                                 0:00
